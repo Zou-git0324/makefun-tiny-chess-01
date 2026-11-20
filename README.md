@@ -18,9 +18,13 @@ MAKEFUN_ENV_URL=http://localhost:8080 python3 main.py
 
 ## Revision
 
-Root move ordering (2026-11-20): after each iterative-deepening pass, root
-moves are now sorted by the score that pass gave them, best first, instead of
-only moving the best move to the front. Move order changes search efficiency
-only, never legality: perft(3) from the start position is still 8902, and the
-mate-in-1 test still finds h5f7. Practice Elo (kit trials 0-2): 1545 / 1279 /
-1099, mean 1308.
+Round 2 (2026-11-20): the round-1 entry scored 997 on the platform's practice
+trial, below the 1,154 floor, so the engine was strengthened. Changes: LMR
+(late-move reductions), futility pruning at the frontier, check extensions, a
+fix for the black passed-pawn bonus (it was inverted), per-file pawn extremes
+for a faster eval, a king endgame taper, and repetition-draw scoring against
+the game history. The node budget stays at 50,000 a move and the search is
+still deterministic. Move order changes search efficiency only, never
+legality: perft(3) from the start position is still 8902, and the mate-in-1
+test still finds h5f7. Practice Elo (kit trials 0-2, local): 1451 / 1279 /
+1099, mean 1276.
