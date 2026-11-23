@@ -28,3 +28,12 @@ still deterministic. Move order changes search efficiency only, never
 legality: perft(3) from the start position is still 8902, and the mate-in-1
 test still finds h5f7. Practice Elo (kit trials 0-2, local): 1451 / 1279 /
 1099, mean 1276.
+
+Round 5 (2026-11-23): the engine was rewritten on a Zobrist/transposition-table
+base with killer moves, a history heuristic, null-move pruning (reduction 3),
+iterative deepening to a 100,000-node budget, root PVS, repetition-draw scoring
+and draw-avoidance (contempt). Search fixes: lazy legality (no legality test
+until after make, +34% speed), quiescence now returns the mate score when in
+check (it used to stand-pat), and LMR is skipped while in check. Practice Elo
+(kit trials 0-2, local): 1545 / 1654 / 1545, mean 1581. perft(3) still 8902,
+mate-in-1 still h5f7.
